@@ -21,7 +21,7 @@ func iPanic(i int) {
 
 The output, as shown below, is composed of the message passed to the panic built-in function, a line describing which goroutine was running at the moment of the panic and the stack trace containing all the calls from the beginning of the program execution to the line that panicked.
 
-```text
+```txt
 panic: I'm outta here
 
 goroutine 1 [running]:
@@ -61,7 +61,7 @@ This picture/table shows an example of stack frame to illustrate what _the relat
 
 The code also features a stack traces with a call to a function with an `int` parameter that is represented for example in the line:
 
-```text
+```txt
 main.iPanic(0x3)
    /tmp/sandbox634668020/prog.go:9 +0x33
 ```
@@ -82,7 +82,7 @@ func iPanic(i int) {
 }
 ```
 
-```text
+```txt
 panic: I'm outta here
 
 goroutine 1 [running]:
@@ -115,7 +115,7 @@ func iPanic(b bool, by byte, r rune, f float32, c complex64) {
 
 Here's the output (excluding the `Println` line)
 
-```text
+```txt
 panic: I'm outta here
 
 goroutine 1 [running]:
@@ -144,6 +144,68 @@ All of this values are hexadecimal encoding of the value that has been passed to
 
 The encoding of the values is done in this way for `bool` and all numeric types, in which `rune` is included.
 
+## Pointers and nil
+
+Regarding pointers and nil values, we generate a panic with the following [playground example](https://play.golang.org/p/5Ica8GqHDNn) where we call recursively `i` and times a function call before starting a panic and exiting. In addition of this we add a `*int` parameter to read the value printed in the stack trace.
+
+```go
+func main() {
+    a := 5
+    iPanic(a, &a)
+}
+
+func iPanic(i int, j *int) {
+    if i > 0 {
+        iPanic(i-1, j)
+    }
+    panic("I'm outta here")
+}
+```
+
+The output, as shown below, is composed of the message passed to the panic built-in function, a line describing which goroutine was running at the moment of the panic and the stack trace containing all the calls from the beginning of the program execution to the line that panicked.
+
+```txt
+panic: I'm outta here
+
+goroutine 1 [running]:
+main.iPanic(0x0, 0xc000032770)
+    /tmp/sandbox341218196/prog.go:12 +0x59
+main.iPanic(0x1, 0xc000032770)
+    /tmp/sandbox341218196/prog.go:10 +0x3d
+main.iPanic(0x2, 0xc000032770)
+    /tmp/sandbox341218196/prog.go:10 +0x3d
+main.iPanic(0x3, 0xc000032770)
+    /tmp/sandbox341218196/prog.go:10 +0x3d
+main.iPanic(0x4, 0xc000032770)
+    /tmp/sandbox341218196/prog.go:10 +0x3d
+main.iPanic(0x5, 0xc000032770)
+    /tmp/sandbox341218196/prog.go:10 +0x3d
+main.main()
+    /tmp/sandbox341218196/prog.go:5 +0x3d
+```
+
+If we replace `&a` with `nil` we will see in the stack trace that the address changes to `0x0` as shown in the output of the appropriate run.
+
+```txt
+panic: I'm outta here
+
+goroutine 1 [running]:
+main.iPanic(0x0, 0x0)
+    /tmp/sandbox325035618/prog.go:12 +0x59
+main.iPanic(0x1, 0x0)
+    /tmp/sandbox325035618/prog.go:10 +0x3d
+main.iPanic(0x2, 0x0)
+    /tmp/sandbox325035618/prog.go:10 +0x3d
+main.iPanic(0x3, 0x0)
+    /tmp/sandbox325035618/prog.go:10 +0x3d
+main.iPanic(0x4, 0x0)
+    /tmp/sandbox325035618/prog.go:10 +0x3d
+main.iPanic(0x5, 0x0)
+    /tmp/sandbox325035618/prog.go:10 +0x3d
+main.main()
+    /tmp/sandbox325035618/prog.go:5 +0x33
+```
+
 ## Strings and slices
 
 Let's now take a look at this [playground example](https://play.golang.org/p/258SGLRIgiF) featuring `strings` and `slices`  and its correspondent output.
@@ -161,7 +223,7 @@ func iPanic(s string, v []string) {
 }
 ```
 
-```text
+```txt
 panic: I'm outta here
 
 goroutine 1 [running]:
@@ -205,7 +267,7 @@ func iPanic(a A) {
 }
 ```
 
-```text
+```txt
 panic: I'm outta here
 
 goroutine 1 [running]:
@@ -241,7 +303,7 @@ func (a A) iPanic(b bool) {
 }
 ```
 
-```text
+```txt
 panic: I'm outta here
 
 goroutine 1 [running]:
@@ -271,9 +333,7 @@ func (a *A) iPanic(b bool) {
 }
 ```
 
-Stack trace
-
-```text
+```txt
 panic: I'm outta here
 
 goroutine 1 [running]:
@@ -314,7 +374,7 @@ func iPanic(o oper) {
 }
 ```
 
-```text
+```txt
 panic: I'm outta here
 
 goroutine 1 [running]:
@@ -349,7 +409,7 @@ func iPanic(o oper) {
 }
 ```
 
-```text
+```txt
 panic: I'm outta here
 
 goroutine 1 [running]:
@@ -374,7 +434,7 @@ func iPanic(m map[int]bool, c chan int, f func()) {
 }
 ```
 
-```text
+```txt
 panic: I'm outta here
 
 goroutine 1 [running]:
