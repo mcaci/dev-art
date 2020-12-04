@@ -448,15 +448,85 @@ main.main()
 
 I hope this article helps you unlock the secrets of the Go stack and, even though they prove to difficult to read, you may gain a better understanding of the meaning and the information that the stack is providing before heading to potentially long debugging sessions.
 
-You can find me up on twitter @nikiforos_frees if you have any questions or comments and follow me on dev.to @mcaci
-
-**This was Michele and thanks for reading!**
-
 ## References
 
 Here is a list of references that helped me in doing my research on the go stack:
 
+- [Defer, Panic, and Recover](https://blog.golang.org/defer-panic-and-recover)
 - <https://www.ardanlabs.com/blog/2015/01/stack-traces-in-go.html>
 - <https://go101.org/article/type-system-overview.html>
 - [Go Data Structures: Interfaces](https://research.swtch.com/interfaces)
 - [runtime/stack.go](https://golang.org/src/runtime/stack.go)
+- [How to read the heap dump](https://github.com/golang/go/wiki/heapdump15-through-heapdump17)
+
+## Notes
+
+### Panic inside method of struct implementing interface
+
+[Playground example](https://play.golang.org/p/a3inhaA_Suh)
+
+```go
+import "fmt"
+
+type oper interface {
+    op() string
+}
+
+type A struct {
+    s string
+}
+
+func (a *A) op() string { panic("I'm outta here"); return a.s }
+
+func main() {
+    iPanic(&A{"op"})
+}
+
+func iPanic(o oper) {
+    fmt.Println(o.op() + "!")
+}
+```
+
+Stack trace
+
+```txt
+panic: I'm outta here
+
+goroutine 1 [running]:
+main.(*A).op(0xc00010a040, 0xc00010a030, 0xc000068f48)
+    /tmp/sandbox100894253/prog.go:13 +0x39
+main.iPanic(0x4dbfa0, 0xc00010a040)
+    /tmp/sandbox100894253/prog.go:20 +0x35
+main.main()
+    /tmp/sandbox100894253/prog.go:16 +0x59
+```
+
+### How to display heap dump
+
+As a side note here a [playground example](https://play.golang.org/p/xe4d5fn5lxw) of how to display the heap dump. The content of a heap dump is binary, not text, and it's not possible to display it properly via a text editor.
+
+
+```go
+import (
+    "os"
+    "runtime/debug"
+)
+
+func main() {
+    a := 5
+    iPanic(a, &a)
+}
+
+func iPanic(i int, j *int) {
+    defer func() {
+        if r := recover(); r != nil {
+            fileDescriptor := os.Stdout.Fd()
+            debug.WriteHeapDump(fileDescriptor)
+        }
+    }()
+    if i > 0 {
+        iPanic(i-1, j)
+    }
+    panic("I'm outta here")
+}
+```
