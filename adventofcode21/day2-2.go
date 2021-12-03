@@ -12,8 +12,7 @@ import (
 	"unicode"
 )
 
-func main() {
-	// func day2Part2() {
+func day2Part2() {
 	algo4()
 }
 
