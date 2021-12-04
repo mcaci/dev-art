@@ -11,10 +11,12 @@ import (
 	"strconv"
 )
 
-func main() {
-	// func day3Part2() {
+func day3Part2() {
 	day3_2_algo2()
 }
+
+// To be implemented: test with sorting
+func day3_2_algo4()
 
 // too expensive with respect to algo2
 // memory is not not gained and reading the file multiple times increase the cpu time of an order of magnitude
