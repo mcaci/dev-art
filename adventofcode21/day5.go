@@ -12,10 +12,19 @@ import (
 	"unicode"
 )
 
-func main_day5() {
+func main() {
+	part1 := flag.Bool("part1", false, "trigger part1")
 	part2 := flag.Bool("part2", false, "trigger part2")
 	flag.Parse()
-	day5(*part2)
+	switch {
+	case *part1:
+		day5(false)
+	case *part2:
+		day5(true)
+	default:
+		day5(false)
+		day5(true)
+	}
 }
 
 const side = 1000
