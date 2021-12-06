@@ -12,7 +12,7 @@ import (
 	"unicode"
 )
 
-func main() {
+func main_day5() {
 	part1 := flag.Bool("part1", false, "trigger part1")
 	part2 := flag.Bool("part2", false, "trigger part2")
 	flag.Parse()
@@ -29,6 +29,14 @@ func main() {
 
 const side = 1000
 
+// Complexity of day5 algo
+// each line of the input is read at least one
+// for each line we compute a list of coordinates which is the function of the distance between the two coordinates
+// this is constrained by the "side" constant which is 1000
+// so it is polinomial in time
+// for the memory:
+// it is O(n ^ 2) in the size of the side / max value for the coordinate present in input
+// but constant size with respect to the size of the input file itself
 func day5(isPart2 bool) {
 	f, err := os.Open("day5")
 	if err != nil {
