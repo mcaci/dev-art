@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"sort"
 	"strconv"
 )
 
@@ -18,14 +17,16 @@ func day7() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	f := make([]int, len(b))
-	for i, num := range bytes.Split(b, []byte{','}) {
+	f := make(map[int]uint)
+	v := make([]int, 2000)
+	for _, num := range bytes.Split(b, []byte{','}) {
 		n, err := strconv.Atoi(string(num))
 		if err != nil {
 			log.Fatal(err)
 		}
-		f[i] = n
+		f[n]++
+		v[n]++
 	}
-	sort.Ints(f)
 	fmt.Println(f)
+	fmt.Println(v)
 }
