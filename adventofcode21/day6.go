@@ -8,7 +8,7 @@ import (
 	"strconv"
 )
 
-func main() {
+func main_day6() {
 	// const nDays = 80
 	day6algo1(80)
 	const nDays = 256
