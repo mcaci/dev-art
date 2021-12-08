@@ -14,7 +14,7 @@ import (
 	"gonum.org/v1/plot/vg"
 )
 
-func main() {
+func main_day7() {
 	day7(func(posA, posB float64) float64 { return math.Abs(posA - posB) })
 	// error: did not use Abs here (negative numbers impact the calculation)
 	day7(func(posA, posB float64) float64 {
