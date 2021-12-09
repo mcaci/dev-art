@@ -10,8 +10,38 @@ import (
 	"strings"
 )
 
-func main() {
-	day8part2()
+func main_day8() {
+	day8part2Conc()
+}
+
+func day8part2Conc() {
+	f, err := os.Open("day8")
+	if err != nil {
+		log.Print(err)
+	}
+	r := bufio.NewReader(f)
+	var lastLine bool
+	outC := make(chan int)
+	for !lastLine {
+		line, err := r.ReadString('\n')
+		switch err {
+		case nil:
+			go processLine(line, outC)
+		case io.EOF:
+			go processLine(line, outC)
+			lastLine = true
+			close(outC)
+		default:
+			log.Print(err)
+		}
+	}
+	for n := range outC {
+		fmt.Print(n, "-")
+	}
+}
+
+func processLine(line string, outC chan<- int) {
+	outC <- len(line)
 }
 
 // complexity is linear on the size of the input file
