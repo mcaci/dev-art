@@ -13,7 +13,7 @@ import (
 	"sort"
 )
 
-func main() {
+func main_day9() {
 	day9Part2()
 	draw()
 }
