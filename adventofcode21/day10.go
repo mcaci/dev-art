@@ -14,7 +14,7 @@ var errScoreMap = map[byte]int{')': 3, ']': 57, '}': 1197, '>': 25137}
 var autoComplScoreMap = map[byte]int{')': 1, ']': 2, '}': 3, '>': 4}
 var autoComplMap = map[byte]byte{'(': ')', '[': ']', '{': '}', '<': '>'}
 
-func main() {
+func main_day10() {
 	f, err := os.Open("day10")
 	if err != nil {
 		log.Print(err)
