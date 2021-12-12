@@ -11,9 +11,9 @@ import (
 	"os"
 )
 
-func main() {
-	height := flag.Int("h", 400, "height of the output image in pixels")
-	width := flag.Int("w", 400, "width of the output image in pixels")
+func main_day11draw() {
+	height := flag.Int("h", 160, "height of the output image in pixels")
+	width := flag.Int("w", 160, "width of the output image in pixels")
 	flag.Parse()
 
 	f, err := os.ReadFile("day11")
@@ -34,7 +34,7 @@ func main() {
 		}
 	}
 	octs = append(octs, octRow)
-	for i := 0; i < 50; i++ {
+	for i := 0; i < 500; i++ {
 		log.Println("Step count:", i)
 		// step 1: raise
 		for i := range octs {
@@ -44,7 +44,7 @@ func main() {
 		}
 		// create and append image
 		images = append(images, octopusImg(octs, *height, *width))
-		delays = append(delays, 10)
+		delays = append(delays, 15)
 		// step 2: flash
 		var flashed [][]bool
 		for i := range octs {
@@ -95,8 +95,8 @@ func octopusImg(octs [][]uint, h, w int) *image.Paletted {
 	img := image.NewPaletted(image.Rect(0, 0, h, w), palette.Plan9)
 	for i := 0; i < h; i++ {
 		for j := 0; j < w; j++ {
-			n := uint8(255.0 * (1.0 - float64(octs[i/40][j/40])/9.0))
-			img.Set(i, j, color.RGBA{R: uint8(float64(n) * 0.3), G: uint8(float64(n) * 0.9), B: uint8(float64(n) * 0.8), A: 255})
+			n := uint8(255.0 * (1.0 - float64(octs[i/16][j/16])/9.0))
+			img.Set(i, j, color.RGBA{R: uint8(float64(n) * 0.5), G: uint8(float64(n) * 0.3), B: uint8(float64(n) * 0.8), A: 255})
 		}
 	}
 	return img
@@ -113,7 +113,7 @@ func flashGif(octs [][]uint, flashed [][]bool, i, j int, images []*image.Palette
 		}
 		// create and append image
 		images = append(images, octopusImg(octs, h, w))
-		delays = append(delays, 10)
+		delays = append(delays, 15)
 		octs[i][j]++
 		if octs[i][j] > 9 {
 			flashGif(octs, flashed, i, j, images, delays, h, w)
