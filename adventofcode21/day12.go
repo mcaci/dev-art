@@ -10,7 +10,7 @@ import (
 	"unicode"
 )
 
-func main() {
+func main_day12() {
 	day12()
 }
 
