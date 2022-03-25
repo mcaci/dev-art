@@ -1,0 +1,56 @@
+Discarded approaches:
+
+1) using a string matrix and filling it
+
+2) dropping invalid values by looking at the constraints
+
+Final approach:
+
+Study what a CSP is, wikipedia is a good start but google will help you find more
+Implement the algorithm
+
+Defining the CSP:
+
+Variable set - There are 30 variables, one per every available value in the problem
+
+Domain set - Five different values for each (6) category
+
+Assumption since all categories are different and all values are different they can be mapped to int values from 1-5 -> Interface values that return a value from 1-5
+
+Implementation - 6 types (uint8), 5 consts each starting from iota + 1 (1 -> 5), 1 interface which maps from const value to domain value
+
+Constraint set
+Constraint definition: function that given an assignment of domain values to variables evaluates true or false
+
+Example - given an assignment, read its values by groups of 5 elements and verify that every element in the group is different or equal to 0, which means check if an assignment is a partial solution to the csp problem
+
+Implementation - slice of constrainter interface values, more on that later
+
+Implementing the CPS:
+
+For the implementation of the CSP problem the most basic approach is to assign a value, check if the constraints are satified and make a recursive call to the implementation algorithm with the new assignment. If an assignment does not satisfy all the constraints we backtrack in the recursion and try new assignments.
+
+In summary
+
+We check if the assignment is complete;
+if so, the problem is solved and we exit with success.
+else we take the index of an unassigned variable.
+
+Then we start a double loop, the first one on domain values, the second one on constraints
+before the second loop we assign the current domain value to the unassigned variable and for each constraint we check that 
+
+The current constraint is applicable on the variables after the assignment, which means that we have all necessary information to evaluate if the rule satisfiable or not.
+If not, we can safely check the next constraint
+
+If so, we check that the current constraint is satisfied by all variables after the assignment, which means that all the assigned variables do not break the constraint.
+If not, the domain value is not vaild for the chosen variable and is unassigned and we skip to the next domain value, assign it and begin again with the constraint verification.
+
+If all checks pass, either because the constraints are not applicable or because they are all satified, we accept the value in the assignment and we call recursively the algorithm.
+
+The recursive call returns success if the assignment is complete or the previous recursive call has ended with success.
+
+The recursive call returns failure if no domain value manage to satisfy the constraints. In this case the algorithm backtracks and check for a new domain value, if all the values have been examined without success, a failure is returned.
+
+
+
+

@@ -1,0 +1,6 @@
+delve: go debugger -> go get
+dlv debug -- -n 10  # where main is present
+1) break main.go:16
+2) c (continue to breakpoint or to the end)
+3) l (list code)
+4) vars/funcs/locals (locals -v <regex> for local vars)
