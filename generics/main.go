@@ -6,8 +6,8 @@ import (
 )
 
 func main() {
-	// example0()
-	example1()
+	example0()
+	// example1()
 }
 
 func example0() {

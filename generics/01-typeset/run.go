@@ -12,7 +12,9 @@ type MyTypeSet interface {
 	int | bool | string
 }
 
-func Contains[S ~[]E, E comparable](s S, e E) bool {
+// Contains uses comparable keyword to check
+// if container of type slice of E contains element of type E
+func Contains[S []E, E comparable](s S, e E) bool {
 	for i := range s {
 		if s[i] != e {
 			continue
@@ -22,17 +24,16 @@ func Contains[S ~[]E, E comparable](s S, e E) bool {
 	return false
 }
 
-func PrintAnyValue[S any](s ...S) {
+// Print all is an example of usage of any
+// func PrintAll(s ...any) { // is also good
+func PrintAll[S any](s ...S) {
 	for i := range s {
 		fmt.Println(s[i])
 	}
 }
 
 func Run() {
-	// Print[A](2)
-	// Print[B](2)
-	// Print[C](2)
-	// Print[D](2)
-	// Print[int](2)
-	// Print[int32](2)
+	fmt.Println(Contains[[]string, string]([]string{"a", "b", "c"}, "c"))
+	fmt.Println(Contains[[]string, string]([]string{"a", "b", "c"}, "d"))
+	PrintAll("a", "b", "c", "d")
 }

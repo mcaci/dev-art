@@ -1,10 +1,14 @@
-package typeset
+package drafts
 
-import "fmt"
+import (
+	"fmt"
+
+	"golang.org/x/exp/constraints"
+)
 
 // MethodTypeSet is an example of a set of types and methods
 type MethodTypeSet interface {
-	~int | int32
+	constraints.Integer
 	String() string
 }
 
