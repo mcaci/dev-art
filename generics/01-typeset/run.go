@@ -1,6 +1,9 @@
 package typeset
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+)
 
 // MyInterface is an example of a set of methods
 type MyInterface interface {
@@ -9,7 +12,7 @@ type MyInterface interface {
 
 // MyTypeSet is an example of a set of types
 type MyTypeSet interface {
-	int | bool | string
+	int | bool | string | os.File
 }
 
 // Contains uses comparable keyword to check
