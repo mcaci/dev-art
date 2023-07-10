@@ -1,0 +1,80 @@
+GopherConEU 2023 notes
+
+Day1 workshop:
+Michele: come mettere in piedi un'applicazione go deployata sul Cloud con tutta la configurazione iniziale e dei consigli su come approcciare la scrittura del codice go che va al di là di ciò che si scrive quotidianamente. Esempio: ServeHTTP, cosa l'oggetto è vs cosa l'oggetto fa (no over engineering). 
+Giuseppe: Bill Kennedy, spronato a fare il workshop, paura di sviluppare mentre parlava per mancanza di conoscenza, show molto seguibile anche da un livello principiante. Nota interessante: non fare questi insegnamenti in progetti esistenti ma nei futuri. Mia visione vs visione comunità. approccio deploy-first con il tuo locale settato e la config pronta per il deploy. Mentalità da engineer che permetta di passare a una mentalità più da senior. (Esempio Makefile che ti permette di registrare i comandi senza rifarli ogni volta). Kustomize, imparato sul momento grazie alla spiegazione della doc e ai comandi di Bill.
+Opportunità di aver seguito il GDG Berlino sul service weaver, nuovo tool uscito su GitHub tre mesi fa, e iniziato a presentare/pubblicizzare in Europa di recente con feedback e tool con opportunità di condivisione interna, grazie alla pubblicità fatta durante il workshop.
+Investimento importante personale iperripagato a livello di conoscenze apprese.
+Remark personale: poco socializzazione iniziale.
+
+Metà dei partecipanti (600 vs 500) con 2 anni o meno di esperienza go (conversione in corso)
+
+Michele: contatti RIVISTI, non solo nuovi.
+
+// Parlare della tipa che è impazzita per 1a
+
+Day 2: Cameron, ux/io interview di venerdì (noi abbiamo parlato direttamente durante la conf) ecosistema che crea una base di sviluppo per ciascun progetto in go. Supporto per microservizi con i binari modulari, sicurezza, reliability. Promessa della backward compatibility. Vedere la lista dei talks e di sponsor per idea sui trend in cui Go è stato presente (almeno riguardo la conferenza)
+Giuseppe:
+L’inizio della conferenza è stato stimolante, dal primo momento ho capito che i “conduttori” sono stati anche loro sviluppatori e il primo impatto è stato subito positivo con il primo Talk fatto direttamente da Cameron, Product Owner del team di golang il quale ha ribadito più volte il fatto che golang deve essere considerato come ecosistema da adottare più che un “semplice” linguaggio di programmazione. Dietro questo c’è anche “mamma” Google che crede tanto in questa missione. Oltre alle varie nuove feature introdotte con la version 1.21, Cameon ha rassicureato che non ci sarà nessuna versione futura che porterà a delle incompatibilità con le precedenti versioni del linguaggio. Ha fatto notare anche il trend di  golang su github riguardo PR, discussioni etc sta aumentando sempre di più come anche la conversione/migrazione di molti sviluppatori Senior a golang provenienti da altri lingauggi come Java per esempio.
+Già dopo il primo talk, i conduttori, hanno iniziato a spiegare che questo poteva essere il buon momento per socializzare e fare nuove conoscenze. Per essere onesti non avevo “ricevuto” bene cosa intendevano. L’ho capito nelle ore e giorni succesivi.i
+Promozione del service viewer di nuovo, ma lato documentazione diciamo, piu’ che lato pratico come nel workshop. Progetto rilasciato 3 mesi fa e quindi in fase iniziale di promozione.
+
+Parlare dei vari sponsor:
+Victoria metrics (vs. Prometheus): puntano sulle performance, tutto in Go, parte Opensource
+Upvest: Api per investimenti finanziari, legami recenti con Revolut
+
+Time series database from scratch (speaker di Victoria metrics)
+P.s. race condition talk (speaker di Delivery Hero)
+Socializzazione durante i coffee break
+
+Panel del Go team: domande varie ed eventuali (struttura del progetto, backward compatibility, perche’ non usare testify, security tools, go senior SwEng vs go junior SwEng).
+
+Nota: Gli sticker Amadeus sono andati a ruba (portarli per mostrarli o quanto meno avere una foto a portata di mano)
+
+Day3:
+Michele: Alcuni argomenti interessanti come il 2D game programming (impara Go con una cosa “divertente”), una piccola introduzione sull’ebpf (da collegare con webassembly), tips di programmazione usando functional options (type Name func(*Config) error), da vedere se vale la pena dettagliare. Conversazione con i tipi di Google (Todd per il consiglio sull’onboarding), con la tipa di FerretDB, alternativa open source a MongoDB, (Possibile intervento in Amadeus e in futuro per RivieraDEV) che ha fatto il talk.
+Giuseppe: alcuni topics gia’ introdotti nel giorno precedente (security e slog, derivato di zap log), interazione con la community e GitHub
+
+Lightining talks: Giuseppe con Fyne!!!! (5 minuti, 600 spettatori), LT parevano sottovalutati ma invece sono sembrati tanto aspettati quanto i talks classici
+
+Chiusure, scambio contatti, momento fun con il Go Time “Gopher Say”, saluti.
+GopherConEU 2023 notes
+
+Day1 workshop:
+Michele: come mettere in piedi un'applicazione go deployata sul Cloud con tutta la configurazione iniziale e dei consigli su come approcciare la scrittura del codice go che va al di là di ciò che si scrive quotidianamente. Esempio: ServeHTTP, cosa l'oggetto è vs cosa l'oggetto fa (no over engineering). 
+Giuseppe: Bill Kennedy, spronato a fare il workshop, paura di sviluppare mentre parlava per mancanza di conoscenza, show molto seguibile anche da un livello principiante. Nota interessante: non fare questi insegnamenti in progetti esistenti ma nei futuri. Mia visione vs visione comunità. approccio deploy-first con il tuo locale settato e la config pronta per il deploy. Mentalità da engineer che permetta di passare a una mentalità più da senior. (Esempio Makefile che ti permette di registrare i comandi senza rifarli ogni volta). Kustomize, imparato sul momento grazie alla spiegazione della doc e ai comandi di Bill.
+Opportunità di aver seguito il GDG Berlino sul service weaver, nuovo tool uscito su GitHub tre mesi fa, e iniziato a presentare/pubblicizzare in Europa di recente con feedback e tool con opportunità di condivisione interna, grazie alla pubblicità fatta durante il workshop.
+Investimento importante personale iperripagato a livello di conoscenze apprese.
+Remark personale: poco socializzazione iniziale.
+
+Metà dei partecipanti (600 vs 500) con 2 anni o meno di esperienza go (conversione in corso)
+
+Michele: contatti RIVISTI, non solo nuovi.
+
+// Parlare della tipa che è impazzita per 1a
+
+Day 2: Cameron, ux/io interview di venerdì (noi abbiamo parlato direttamente durante la conf) ecosistema che crea una base di sviluppo per ciascun progetto in go. Supporto per microservizi con i binari modulari, sicurezza, reliability. Promessa della backward compatibility. Vedere la lista dei talks e di sponsor per idea sui trend in cui Go è stato presente (almeno riguardo la conferenza)
+Giuseppe:
+L’inizio della conferenza è stato stimolante, dal primo momento ho capito che i “conduttori” sono stati anche loro sviluppatori e il primo impatto è stato subito positivo con il primo Talk fatto direttamente da Cameron, Product Owner del team di golang il quale ha ribadito più volte il fatto che golang deve essere considerato come ecosistema da adottare più che un “semplice” linguaggio di programmazione. Dietro questo c’è anche “mamma” Google che crede tanto in questa missione. Oltre alle varie nuove feature introdotte con la version 1.21, Cameon ha rassicureato che non ci sarà nessuna versione futura che porterà a delle incompatibilità con le precedenti versioni del linguaggio. Ha fatto notare anche il trend di  golang su github riguardo PR, discussioni etc sta aumentando sempre di più come anche la conversione/migrazione di molti sviluppatori Senior a golang provenienti da altri lingauggi come Java per esempio.
+Già dopo il primo talk, i conduttori, hanno iniziato a spiegare che questo poteva essere il buon momento per socializzare e fare nuove conoscenze. Per essere onesti non avevo “ricevuto” bene cosa intendevano. L’ho capito nelle ore e giorni succesivi.i
+Promozione del service viewer di nuovo, ma lato documentazione diciamo, piu’ che lato pratico come nel workshop. Progetto rilasciato 3 mesi fa e quindi in fase iniziale di promozione.
+
+Parlare dei vari sponsor:
+Victoria metrics (vs. Prometheus): puntano sulle performance, tutto in Go, parte Opensource
+Upvest: Api per investimenti finanziari, legami recenti con Revolut
+
+Time series database from scratch (speaker di Victoria metrics)
+P.s. race condition talk (speaker di Delivery Hero)
+Socializzazione durante i coffee break
+
+Panel del Go team: domande varie ed eventuali (struttura del progetto, backward compatibility, perche’ non usare testify, security tools, go senior SwEng vs go junior SwEng).
+
+Nota: Gli sticker Amadeus sono andati a ruba (portarli per mostrarli o quanto meno avere una foto a portata di mano)
+
+Day3:
+Michele: Alcuni argomenti interessanti come il 2D game programming (impara Go con una cosa “divertente”), una piccola introduzione sull’ebpf (da collegare con webassembly), tips di programmazione usando functional options (type Name func(*Config) error), da vedere se vale la pena dettagliare. Conversazione con i tipi di Google (Todd per il consiglio sull’onboarding), con la tipa di FerretDB, alternativa open source a MongoDB, (Possibile intervento in Amadeus e in futuro per RivieraDEV) che ha fatto il talk.
+Giuseppe: alcuni topics gia’ introdotti nel giorno precedente (security e slog, derivato di zap log), interazione con la community e GitHub
+
+Lightining talks: Giuseppe con Fyne!!!! (5 minuti, 600 spettatori), LT parevano sottovalutati ma invece sono sembrati tanto aspettati quanto i talks classici
+
+Chiusure, scambio contatti, momento fun con il Go Time “Gopher Say”, saluti.
