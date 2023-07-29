@@ -1,0 +1,38 @@
+10k attendees
+
+Tim berners lee keynote: web/http walkthrough and http3.0. focus on solid api, protocol, applications. inrupt.com. AI, chatgpt. Can we contro ai. LLM. Ai that works for me with solid protocols. Transition of the various http protocols and introduction of the AI
+
+Rapyd revutionize fintech: single api for banking interaction. Help with dealing with regulations and avoid having to implement them one by one. Including fintech in products is generating more revenues than advertisement. Classic cc circuits and swift banking models are loosing ground compared to fintech.
+
+Angie Jones: distributed identity, to avoid having identity stripped (like Twitter/X) or lost (like for emails). Web5 aiming to merge the best of Web2 and Web3.
+
+John Romero: history of doom, game development. Design decision, project decisions and the impact of Doom in the future development of games.
+
+Stack overflow: announcements for overflowAI
+
+Brainfood: career advices in the times of layoffs and bustling tech market.
+- Share development experience, people are interested
+- remote work: gafa as inspiration for smaller companies, developers to decide their needs
+- is company good: speak to past developers to know more 
+- developpers often do not handle well rejections
+- transparent communication is a competitive advantage for those who can use it. Helps increase the trust, shows what the company does in the interior
+
+Career on open source: funding, awareness and evolution of development experience. Funding: find new ways to fund besides licenses. GitHub accelerator (github sponsors) and sponsors (others funding oss creators). Awareness: recognition beyond incidents, recognition by advertising self to who uses your software. Acknowledge open source work, say thank you, send support. Evolution of the development experience: e.g. copilot and codespaces. If you have crazy ideas talk about them, ping people even twice and the idea may pass
+
+Music covers with rock and js. Code 100 challenge
+
+Day 2
+Some key takeaways:
+1) Be yourself, give everyone the chance to express and have honest conversations. Show what you're good at, listen to others to learn what's not known
+2) Manager's job is not to make decisions for the devs but empower them to express their best qualities
+
+My talk
+
+Closing keynote stack overflow founder joel spolsky: trip to the eras
+Ms-dos era: here comes everybody (computers become mainstream) screen usage was concern
+Windows era: here comes everybody (computers become cheap and with a good user interface) usablity was concerns 
+Www era: same motto (from computation and publishing to communication) design and scale are concerns.
+Social media era: same motto (the power of organizing without organization) concerns: cultural anthropology, growth hacking (how to get big). Slippery slope in engagement vs just making connections.
+Mobile era: same motto, smartphone are everyone. Concerns: small screens (from www to small screen), focus to simplicity, internet connection.
+What's next: no blockchain, no iot, no virtual reality, quantum computing next next thing. Generative ai, computer communicates with natural language. Concerns? 
+Cultural anthropology experiment: stack overflow. History of the eras personal view. Passing the rod to young generation, don't mess as in social era slippery slope 
