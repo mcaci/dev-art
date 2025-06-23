@@ -1,0 +1,59 @@
+Gopherconeu 2025
+
+Dave Cheney: naming, initialization, helpers.
+Conscious naming helps design. Short vs long. Position and length.
+Initialization always as a way to pretend immutability, switch vs if. Keep left.
+Helpers: main.run vs main.main. Helpers help with testing and are interconnected with naming and initialization
+
+inspired by: https://dave.cheney.net/practical-go/presentations/qcon-china.html
+
+Goroutines: analyzing leaks with asyncroutinemanager red hat async-routine in github
+
+https://github.com/openshift-online/async-routine
+
+Go team panel: V2 for packages not language, still being judicious about it. Concurrency safety from Rust is an interesting feature. Diagnostics for goroutines, making concurrency understandable as much as possible but difficult. Desired things: Optional values, compiler optimization, stack traces in errors. Restricting security in the program, not built-in in the language
+
+Refactor: not rewrite, it won't be faster. Prod apps are messy. It's easy to learn a new technology but not too learn it well fast. Easy to read, to test. Think principle: test, Handle errors, interfaces, Narrow dependencies, keep improving.
+
+J Amsterdam: API evolution. Badness of breakage. Error ok unless people depend on it. Use new import path (eg "v2"). Future proofing: be minimal, you can add stuff later, unexport better than export. Exported things can go in internal package.
+Options: add later exported fields/methods.
+Option struts (only at creation). Copy options. Variadic functions.
+About interfaces: can't add to interface without breaking, can add unexported methods. Mile context protocol (MCP).
+Beware of clutter
+How to avoid breaking
+1) v0 (no guarantees but use for short time)
+2) control uses (internal,  private repo, just document)
+3) environment variable that preserves old behavior
+4) add new function, not new parameter. Add new interface, not new method to old one.
+5) Deprecated comment
+6) go:fix directive + go fix command
+7) v1.x-prereleaase for experiments
+8) build tags go:build (file complied only with the appropriate tags)
+
+Tiny go concurrency and how it was implemented (also done now because chip processors start having cores): https://cuddly.tube/w/32DjftoiTssyT1tPyjxr1w
+
+Protobuf mike: Json vs protobuf. Json is not very strict in the format. Protobuf include schema validation, clearer type semantics and is more efficient. Field presence, being pointer nil means field not set. Lazy initialization is needed for opaque protobuf api. Opaque-migration go blog doc
+https://go.dev/blog/protobuf-opaque
+
+Function: pure function pair well with generics. Function with private side effects can also be an object. y combinator -> recursion -> anonymous function and lambda calculus. Fixed point. Functional programming in go Is possible, just very hard
+
+AI based load tests
+
+Swiss table maps Michael: 15% operations of a go executables are on maps (key value collection) map is a hash table. Swiss tables 2017 first appearance. Handling collisions (open addressing, Swiss tables are kinda similar). Growing means doubling, load factor tells the measure of fullness. Parallel comparison in the control table being done in a single instruction is the key in gaining performance.
+Binding latency of growing a map by spreading the computation in different inserts. Go map is a set of swiss tables that can grow independently. Iteration is fine except for the edge cases related to the possibility to add, update or delete an entry, the solution is to create a new map with the updates that is consulted to check them while iterating the old map
+https://go.dev/blog/swisstable
+
+Testing time Damien:
+Sync vs async (go no-go)
+Async testing is more tricky.
+How do you test something didn't happen?
+Tests with real times are flaky and/or slow (use no sleep)
+Testable concorrenti cose: use fake clock, have a way to wait for quiescence. Horrible runtime hacks with runtime.stack.
+Pick one: simple and idiomatic or testable.
+Testing/sync test: time bubble with fake time
+Durably blocked: wait returns, time advances, test fail. (Time.sleep, chan ops and waitgroup inside same bubble, sync cond wait, empty select statement)
+Not durably blocked: I/O, syscalls, mutexes
+https://go.dev/blog/synctest
+
+How to contribute to Go:
+https://go.dev/doc/contribute
